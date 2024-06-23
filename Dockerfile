@@ -11,10 +11,10 @@ RUN pip install jupyterlab
 RUN pip install telebot flask
 
 # Clone the GitHub repository
-RUN git clone https://github.com/BLAZERRAJ/Ddos-main.git
+RUN git clone https://github.com/bhaisja/api22.git
 
 # Set working directory
-WORKDIR /home/jovyan/Ddos-main
+WORKDIR /home/jovyan/api22
 
 # Make scripts executable
 RUN chmod +x *
