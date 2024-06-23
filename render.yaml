@@ -4,7 +4,7 @@ services:
     env: python
     buildCommand: |
       apt-get update && apt-get install -y git
-      pip install uvicorn
+      pip install uvicorn fastapi
       pip install telebot flask
       git clone https://github.com/bhaisja/api22.git
       cd api22
