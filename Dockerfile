@@ -5,10 +5,10 @@ FROM python:3.9-slim
 RUN apt-get update && apt-get install -y git
 
 # Install additional Python packages
-RUN pip install --no-cache-dir telebot flask uvicorn
+RUN pip install --no-cache-dir uvicorn fastapi telebot flask
 
 # Clone the GitHub repository
-RUN git clone  https://github.com/bhaisja/api22.git /app
+RUN git clone https://github.com/bhaisja/api22.git /app
 
 # Set working directory
 WORKDIR /app
