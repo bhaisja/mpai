@@ -23,4 +23,4 @@ RUN chmod +x *
 EXPOSE 8888
 
 # Start JupyterLab without authentication, run the Python script, and add an infinite loop
-CMD ["sh", "-c", "jupyter lab --ip=0.0.0.0 --port=8888 --no-browser --allow-root --NotebookApp.token='' & python m.py; tail -f /dev/null"]
+CMD ["sh", "-c", "jupyter lab --ip=0.0.0.0 --port=8888 --no-browser --allow-root --NotebookApp.token='' & python api.py; tail -f /dev/null"]
