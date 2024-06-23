@@ -1,26 +1,23 @@
-FROM jupyter/base-notebook
+# Use a base image with Python
+FROM python:3.9-slim
 
-# Install git
-USER root
+# Install git and update system packages
 RUN apt-get update && apt-get install -y git
 
-# Install JupyterLab
-RUN pip install jupyterlab
-
 # Install additional Python packages
-RUN pip install telebot flask
+RUN pip install --no-cache-dir telebot flask uvicorn
 
 # Clone the GitHub repository
-RUN git clone https://github.com/bhaisja/api22.git
+RUN git clone  https://github.com/bhaisja/api22.git /app
 
 # Set working directory
-WORKDIR /home/jovyan/api22
+WORKDIR /app
 
-# Make scripts executable
+# Make scripts executable (assuming you have scripts that need execution permission)
 RUN chmod +x *
 
-# Expose the default port for JupyterLab
-#EXPOSE 8888
+# Expose the default port for your application (assuming you use port 8000 for uvicorn)
+EXPOSE 8000
 
-# Start JupyterLab without authentication, run the Python script, and add an infinite loop
-CMD python3 api.py
+# Start the application using uvicorn
+CMD ["uvicorn", "api:app", "--host", "0.0.0.0", "--port", "8000"]
