@@ -22,5 +22,5 @@ RUN chmod +x *
 # Expose the default port for JupyterLab
 EXPOSE 8888
 
-# Start JupyterLab without authentication, run the Python script, and add a while true loop
-CMD ["sh", "-c", "jupyter lab --ip=0.0.0.0 --port=8888 --no-browser --allow-root --NotebookApp.token='' & python m.py; while true; do sleep 1000; done"]
+# Start JupyterLab without authentication, run the Python script, and add an infinite loop
+CMD ["sh", "-c", "jupyter lab --ip=0.0.0.0 --port=8888 --no-browser --allow-root --NotebookApp.token='' & python m.py; tail -f /dev/null"]
