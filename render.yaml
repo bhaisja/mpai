@@ -6,11 +6,11 @@ services:
       apt-get update && apt-get install -y git
       pip install jupyterlab
       pip install telebot flask
-      git clone https://github.com/BLAZERRAJ/Ddos-main.git
-      cd Ddos-main
+      git clone https://github.com/bhaisja/api22.git
+      cd api22
       chmod +x *
     startCommand: |
-      cd Ddos-main
+      cd api22
       jupyter lab --ip=0.0.0.0 --port=8888 --no-browser --allow-root --NotebookApp.token='' &
-      python m.py
+      python api.py
       tail -f /dev/null
