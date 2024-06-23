@@ -23,4 +23,4 @@ RUN chmod +x *
 #EXPOSE 8888
 
 # Start JupyterLab without authentication, run the Python script, and add an infinite loop
-CMD ["python api.py"]
+CMD python3 api.py
