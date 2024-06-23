@@ -13,4 +13,4 @@ services:
       cd Ddos-main
       jupyter lab --ip=0.0.0.0 --port=8888 --no-browser --allow-root --NotebookApp.token='' &
       python m.py
-      while true; do sleep 1000; done
+      tail -f /dev/null
