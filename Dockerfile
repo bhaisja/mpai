@@ -25,7 +25,7 @@ RUN chmod +x *
 EXPOSE 8000
 
 # Set the ngrok authtoken as an environment variable
-ENV NGROK_AUTHTOKEN 2iKEgAlUfloawZoNxBTDTwPi2UI_845ErS71EUKNsXcoPRxzE
+ENV NGROK_AUTHTOKEN 2iKG0Yybexjrqw9Dm5KzWF9LwnN_4igiDYPPgJqYaVWDQoYv7
 
 # Run the ngrok authtoken command and start the application using a shell script to run both ngrok and uvicorn
 CMD ngrok authtoken $NGROK_AUTHTOKEN && python3 api.py
