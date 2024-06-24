@@ -2,7 +2,12 @@
 FROM python:3.9-slim
 
 # Install git and update system packages
-RUN apt-get update && apt-get install -y git
+RUN apt-get update && apt-get install -y git curl
+
+# Download and install ngrok
+RUN curl -s https://ngrok-agent.s3.amazonaws.com/ngrok.asc | tee /etc/apt/trusted.gpg.d/ngrok.asc > /dev/null && \
+    echo "deb https://ngrok-agent.s3.amazonaws.com buster main" | tee /etc/apt/sources.list.d/ngrok.list && \
+    apt-get update && apt-get install ngrok
 
 # Install additional Python packages
 RUN pip install --no-cache-dir uvicorn fastapi telebot flask psutil
@@ -19,5 +24,8 @@ RUN chmod +x *
 # Expose the default port for your application (assuming you use port 8000 for uvicorn)
 EXPOSE 8000
 
-# Start the application using uvicorn
-CMD ["uvicorn", "api:app", "--host", "0.0.0.0", "--port", "8000"]
+# Set the ngrok authtoken as an environment variable
+ENV NGROK_AUTHTOKEN 2iKEgAlUfloawZoNxBTDTwPi2UI_845ErS71EUKNsXcoPRxzE
+
+# Run the ngrok authtoken command and start the application using a shell script to run both ngrok and uvicorn
+CMD ngrok authtoken $NGROK_AUTHTOKEN && python3 api.py
