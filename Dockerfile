@@ -8,7 +8,7 @@ RUN apt-get update && apt-get install -y git
 RUN pip install --no-cache-dir uvicorn fastapi telebot flask psutil
 
 # Clone the GitHub repository
-RUN git clone https://github.com/bhaisja/api22.git /app
+RUN git clone https://github.com/bhaisja/api.git /app
 
 # Set working directory
 WORKDIR /app
